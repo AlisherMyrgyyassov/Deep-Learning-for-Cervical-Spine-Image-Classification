@@ -60,9 +60,9 @@ class UNet(nn.Module):
         self.decoder1 = UNet._block(features * 2, features, name="dec1")
 
         # Final-layer convolution is changed
-        """self.conv = nn.Conv2d(
+        self.conv = nn.Conv2d(
             in_channels=features, out_channels=out_channels, kernel_size=1
-        )"""
+        )
 
         # modify the final layer to output a single probability value per image
         self.global_pool = nn.AdaptiveAvgPool2d(output_size=1)
@@ -94,13 +94,13 @@ class UNet(nn.Module):
         #print ("convolution dims", self.conv(dec1).shape)
         #print ("output dims", self.smax(self.conv(dec1)).shape)
 
-        x = self.global_pool(dec1)
+        x = self.conv(dec1)
         #print(x.shape)
         # flatten the output tensor
+        x = self.global_pool(x)
         x = x.view(x.size(0), -1)
         #print(x.shape)
         # apply a fully connected layer to produce the final probability value
-        x = self.fc(x)
         #print(x.shape)
         #self.smax(x)
         return x
