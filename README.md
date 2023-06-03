@@ -20,6 +20,6 @@ I further preprocessed the dataset by normalizing the values.
 U-Net Neural Network 
 
 
-**About This Project: **
+**About This Project:**
 
 The U-Net model was trained on the randomly selected 80% of the dataset and tested on the rest 20%. The model is trained to classify the input image and return a tensor with 63 channels, where each channel is a class. The model could achieve a decent performance of 92% correctly classified images. The model checkpoints are also uploaded in this repo.
