@@ -102,8 +102,8 @@ class UNet(nn.Module):
         # apply a fully connected layer to produce the final probability value
         x = self.fc(x)
         #print(x.shape)
-
-        return self.smax(x)
+        #self.smax(x)
+        return x
 
     @staticmethod
     def _block(in_channels, features, name):
